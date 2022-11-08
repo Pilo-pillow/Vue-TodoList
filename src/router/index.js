@@ -1,29 +1,64 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-
 Vue.use(VueRouter)
 
-const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+const routes = [{
+        path: '/',
+        name: 'Login',
+        component: () =>
+            import ('@/components/user/Login.vue'),
+    },
+    {
+        path: '/login',
+        name: 'Login',
+        component: () =>
+            import ('@/components/user/Login.vue')
+    },
+    {
+        path: '/register',
+        name: 'Register',
+        beforeRouteEnter(to, from, next) {
+            // ...
+        },
+        component: () =>
+            import ('@/components/user/Register.vue')
+    },
+    {
+        path: '/todolist',
+        name: 'todolist',
+        component: () =>
+            import ('@/views/TodoList.vue'),
+        beforeEnter: (to, from, next) => {
+            let isPass = false
+            JSON.parse(localStorage.getItem('users')).forEach((user) => { if (user.username == to.query.username && user.password == to.query.password) isPass = true })
+            if (isPass) next()
+            else next('/')
+        }
+    },
+    {
+        path: '/todolist/countdown',
+        name: 'countdown',
+        component: () =>
+            import ('@/components/time/CountDown.vue')
+    },
+    {
+        path: '/todolist/player',
+        name: 'player',
+        component: () =>
+            import ('@/components/player/MusicPlayer.vue')
+    },
+    {
+        path: '/todolist/calendar',
+        name: 'calendar',
+        component: () =>
+            import ('@/components/time/Calendar.vue')
+    }
 ]
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
+    mode: 'history',
+    base: process.env.BASE_URL,
+    routes
 })
 
 export default router
