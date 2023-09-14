@@ -23,10 +23,10 @@ npm run lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-![首页](/img/img1/)
+![首页](/img/img1.png/)
 
-![Time](/img/img2/)
+![Time](/img/img2.png/)
 
-![音乐播放器](/img/img3/)
+![音乐播放器](/img/img3.png/)
 
-![日历](/img/img4/)
+![日历](/img/img4.png/)
