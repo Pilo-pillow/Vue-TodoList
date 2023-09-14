@@ -22,3 +22,9 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+![首页](imgimage.png)
+
+![音乐播放器](imgimage.png)
+
+![日历](imgimage.png)
